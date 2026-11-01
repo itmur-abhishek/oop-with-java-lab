@@ -1,1 +1,41 @@
+class BankAccount {
+    int accountNo;
+    String name;
+    double balance;
 
+    BankAccount() {
+        this(0, "Unknown", 0);
+    }
+
+    BankAccount(int a, String n) {
+        this(a, n, 0);
+    }
+
+    BankAccount(int a, String n, double b) {
+        accountNo = a;
+        name = n;
+        balance = b;
+    }
+
+    void deposit(double amount) {
+        if (amount > 0) balance += amount;
+    }
+
+    void withdraw(double amount) {
+        if (amount > 0 && amount <= balance)
+            balance -= amount;
+        else
+            System.out.println("Insufficient balance");
+    }
+
+    void display() {
+        System.out.println(accountNo + " " + name + " " + balance);
+    }
+
+    public static void main(String[] args) {
+        BankAccount b = new BankAccount(101, "Aman", 5000);
+        b.deposit(1000);
+        b.withdraw(500);
+        b.display();
+    }
+}
